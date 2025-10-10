@@ -1,55 +1,69 @@
-# from src.power import power_function
-# from src.constants import SAMPLE_CONSTANT
+from src.my_M3 import main_function
 
 
-# def main() -> None:
-#     """
-#     Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
-#     :return: Данная функция ничего не возвращает
-#     """
+def main() -> None:
+    """
+    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
+    :return: Данная функция ничего не возвращает
+    """
 
-#     target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
+    expression = input()
 
-#     result = power_function(target=target, power=degree)
+    print(main_function(expression))
 
-#     print(result)
+if __name__ == "__main__":
+    main()
 
-#     print(SAMPLE_CONSTANT)
+# import re
+# # expression = input()
+# text = "  12 + 3.5 * -2  "
 
-# if __name__ == "__main__":
-#     main()
+# TOKEN_RE = re.compile(r"\s*(\d+(?:\.\d+)?|\*\*|//|[%()+\-*/])")
+# token = tuple[str, float | None]
 
-import re
-# expression = input()
-text = "  12 + 3.5 * -2  "
+# for index, op_match in enumerate(TOKEN_RE.finditer(text)):
+#   print("# match is {0}, match is {1}".format(index, op_match))
+#   for group in op_match.groups():
+#     print("Finded group: ", group)
 
-TOKEN_RE = re.compile(r"""
-\s*
-(
-  [+-]?\d+(?:\.\d+)?
-  | [+\-*/]
-)
-""", re.VERBOSE)
 
-for index, op_match in enumerate(TOKEN_RE.finditer(text)):
-  print("# match is {0}, match is {1}".format(index, op_match))
-  for group in op_match.groups():
-    print("Finded group: ", group)
+# def tokenize(expression: str) -> list:
+#     if not expression or not expression.strip():
+#         print("Пустой ввод")
+    
+#     pos = 0
+#     out: list[token] = []
 
-def expr():
-    ...
+#     while pos < len(expression):
+#         m = TOKEN_RE.match(expression, pos)
+#         if not m:
+#             print(f"Некорректный ввод около: '{expression[pos:]}'")
 
-def add():
-    ...
+#         t = m.group(1)
+#         pos = m.end()
 
-def mul():
-    ...
+#         if t[0].isdigit():
+#             out.append(("NUM", float(t)))
+#         else:
+#             out.append((t, None))
 
-def pow():
-    ...
+#     out.append(("EOF", None))
+#     return out
 
-def unary():
-    ...
+# def expr():
+#     ...
 
-def primary():
-    ...
+# def add():
+#     ...
+
+# def mul():
+#     ...
+
+# def pow():
+#     ...
+
+# def unary():
+#     ...
+
+# def primary():
+#     ...

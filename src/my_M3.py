@@ -67,9 +67,3 @@ def main_function(expression: str) -> float:
     # elif len(stack) > 1:
     else:
         raise CalcError(f"Не хватает операторов: {stack} -- оставшиеся числа")
-
-
-
-
-
-print(main_function("(23 (3 4 -) +)"))
