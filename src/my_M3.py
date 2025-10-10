@@ -6,13 +6,17 @@ class CalcError(Exception):
 
 def main_function(expression: str) -> float:
     # Главная функция программы -- подсчёт выражения в RPN
-    if not expression:
+    if not expression or not expression.strip():
         raise CalcError("Пустое выражение")
     if expression.count("(") > expression.count(")"):
         raise CalcError(f"Не закрыто {expression.count("(") - expression.count(")")} скобок")
     elif expression.count("(") < expression.count(")"):
         raise CalcError(f"Не открыто {expression.count(")") - expression.count("(")} скобок")
-    # if
+    
+
+    # count_ops = 0
+    # for i in ['+', '-', '*', '/', '//', '%', '**']:
+    #     count_ops += оао.count(i)
 
     for i in "+-%*/()":
         expression = expression.replace(i, f" {i} ")
@@ -63,7 +67,10 @@ def main_function(expression: str) -> float:
             raise CalcError(f"Неизвестный токен: '{token}'")
 
     if len(stack) == 1:
-        return stack[0]
+        if stack[0] % 1 == 0:
+            return int(stack[0])
+        else:
+            return stack[0]
     # elif len(stack) > 1:
     else:
         raise CalcError(f"Не хватает операторов: {stack} -- оставшиеся числа")
