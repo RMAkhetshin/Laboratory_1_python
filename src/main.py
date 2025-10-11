@@ -1,4 +1,4 @@
-from my_M3 import main_function
+from my_M3 import calculator
 
 
 def main() -> None:
@@ -9,7 +9,7 @@ def main() -> None:
 
     expression = input()
 
-    print(main_function(expression))
+    print(calculator(expression))
 
 if __name__ == "__main__":
     main()
