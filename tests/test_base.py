@@ -1,6 +1,5 @@
 from src.calculator import calculator
 
-
 # Тесты на операции
 def test_operations():
     assert calculator("3 4 +") == 7
