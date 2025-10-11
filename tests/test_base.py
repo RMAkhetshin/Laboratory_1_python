@@ -1,54 +1,28 @@
-# import unittest
-# from src.my_M3 import main_function
-
-# if __name__ == "__main__":
-#     # Тестируем без input() для надежности
-#     test_cases = [
-#         "3 4 +",           # 7
-#         "3 4 2 * +",       # 11
-#         "5 1 2 + 4 * + 3 -" # 14
-#     ]
-    
-#     for test in test_cases:
-#         try:
-#             result = main_function(test)
-#             print(f"{test} = {result}")
-#         except Exception as e:
-#             print(f"{test} -> Ошибка: {e}")
-
-# import sys
-# import os
-
-# # Добавляем папку src в путь поиска Python
-# sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
-
-# from src.my_M3 import main_function
-
-# import sys
-# import os
-
-# # Получаем абсолютный путь к корневой папке проекта
-# project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# src_path = os.path.join(project_root, 'src')
-
-# # Добавляем путь к src в sys.path
-# if src_path not in sys.path:
-#     sys.path.insert(0, src_path)
-
-
 from src.calculator import calculator
 
-# Ваши тесты
-def test_basic_operations():
-    """Тест базовых операций"""
-    assert calculator("3 4 +") == 7
-    assert calculator("5 1 -") == 4
-    assert calculator("2 3 *") == 6
-    assert calculator("10 2 /") == 5
-    # print("✓ Все базовые тесты пройдены")
 
-def test_complex_expressions():
-    """Тест сложных выражений"""
-    assert calculator("3 4 2 * +") == 11  # 3 + 4*2
-    assert calculator("5 1 2 + 4 * + 3 -") == 14  # 5 + (1+2)*4 - 3
-    # print("✓ Сложные выражения работают")
+# Тесты на операции
+def test_operations():
+    assert calculator("3 4 +") == 7
+    assert calculator("5 10 -") == -5
+    assert calculator("6 7 *") == 42
+    assert calculator("10 4 /") == 2.5
+    assert calculator("10 2 **") == 100
+    assert calculator("34 16 %") == 2
+    assert calculator ("23 // 5") == 4
+
+# Некорректный ввод:
+def test_uncorrect_input():
+    assert calculator("         4  3 **      3 -     ") == 61
+    assert calculator("(((((((3 5 7 - *)))))))") == -6
+    assert calculator("     "), "Пустое выражение"
+    assert calculator("6 7 ) 4 5 -( + *"), "CalcError: Не все скобки открыты или закрыты"
+    assert calculator("23 5 (3 4 -) - * ( 2 4 -"), "Не закрыто скобок: 1"
+    assert calculator(" 2 3 -) 4 *))") == "Не открыто скобок: 2"
+
+# Тесты на унарные знаки и скобки:
+def test_unar_and_brackets():
+    assert calculator("10 ~5 -") == 15
+    assert calculator("3 4 ~ ( 4 2 - ) - *") == 18
+    assert calculator("3 4 - ~ 5 +") == -6
+    assert calculator("( 3 (4 5 -) *) 6 - ") == -9
