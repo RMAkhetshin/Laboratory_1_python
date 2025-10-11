@@ -36,19 +36,19 @@
 #     sys.path.insert(0, src_path)
 
 
-from src.my_M3 import main_function
+from src.calculator import calculator
 
 # Ваши тесты
 def test_basic_operations():
     """Тест базовых операций"""
-    assert main_function("3 4 +") == 7
-    assert src.my_M3.main_function("5 1 -") == 4
-    assert src.my_M3.main_function("2 3 *") == 6
-    assert src.my_M3.main_function("10 2 /") == 5
+    assert calculator("3 4 +") == 7
+    assert calculator("5 1 -") == 4
+    assert calculator("2 3 *") == 6
+    assert calculator("10 2 /") == 5
     # print("✓ Все базовые тесты пройдены")
 
 def test_complex_expressions():
     """Тест сложных выражений"""
-    assert src.my_M3.main_function("3 4 2 * +") == 11  # 3 + 4*2
-    assert src.my_M3.main_function("5 1 2 + 4 * + 3 -") == 14  # 5 + (1+2)*4 - 3
+    assert calculator("3 4 2 * +") == 11  # 3 + 4*2
+    assert calculator("5 1 2 + 4 * + 3 -") == 14  # 5 + (1+2)*4 - 3
     # print("✓ Сложные выражения работают")
