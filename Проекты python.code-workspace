@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "python-labs-skeleton",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
