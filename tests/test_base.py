@@ -1,4 +1,5 @@
-from src.calculator import calculator
+from ..src.functions import calculator
+import unittest
 
 # Тесты на операции
 def test_operations():
